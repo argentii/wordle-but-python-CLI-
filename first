@@ -1,0 +1,31 @@
+#gets correct word(le) and input word(le)                                                     
+solution_word = str(input("Enter solution word: "))
+guess_word = str(input("Enter guess word: "))
+
+#makes sure capitalization isn't an issue                                                     
+solution_word = solution_word.lower()
+guess_word = guess_word.lower()
+
+length1 = len(solution_word)
+length2 = len(guess_word)
+
+#this list gets get appended with "green", "yellow", or "grey" letters                        
+output_list = []
+
+#checks if the word lengths match                                                             
+if length1 != length2:
+    print("The word lengths don't match >:[")
+
+else:
+    #goes step by step through the guessed word to check if it matches the solution           
+    for i in range(0,5):
+        if guess_word[i] == solution_word[i]:
+            output_list.append("g")
+        elif guess_word[i] in solution_word:
+            output_list.append("y")
+        else:
+            output_list.append("_")
+
+    print(output_list)
+
+
