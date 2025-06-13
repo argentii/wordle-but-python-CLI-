@@ -1,17 +1,12 @@
 import random, sys
 
 
-words_five_letters = [
-    "apple", "grape", "beach", "chair", "dance", "early", "fence", "ghost", "happy", "arrow",
-    "blink", "cabin", "dream", "eagle", "frost", "lemon", "magic", "novel", "ocean", "paint",
-    "queen", "river", "score", "track", "unity", "zebra", "amber", "brick", "crane", "daisy",
-    "eager", "flame", "glide", "honey", "ivory", "jolly", "knack", "latch", "melon", "noble",
-    "oasis", "pearl", "quilt", "raven", "sheep", "tiger", "urban", "vivid", "wheat", "xenon",
-    "yield", "zonal", "acorn", "bride", "charm", "delve", "embed", "fable", "grasp", "hatch",
-    "inlet", "joint", "karma", "lumen", "mirth", "niche", "orbit", "petal", "quark", "realm",
-    "smile", "thorn", "utter", "vigor", "whale", "youth", "azure", "banjo", "coral", "dealt",
-    "event", "frost", "giant", "haste", "input", "jazzy", "koala", "ledge", "manor", "ninth",
-]
+words_five_letters = []
+
+
+def load_words(filename):
+    with open(filename, "r") as file:
+        return [line.strip() for line in file if len(line.strip()) == 5]
 
 
 def man():
@@ -27,7 +22,9 @@ def man():
           There are only six (6) tries. Good luck.
           ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
           """)
+
     return
+          
 
 def wordle_check(solution_word, guess_word):
     print("pass w_c")
@@ -77,12 +74,51 @@ def wordle_setup():
             print("Invalid input. [Try RANDOM] or [CHOOSE] to continue. >>>")
 
         print(f"-solution word selected-")
-        print(f"solution word: {solution_word}")
+        #print(f"solution word: {solution_word}")
         return solution_word
-    
+
+          
 def main_game(sol_wd):
     print("\npass main_game\n")
+    #print("solution: " + str(sol_wd))
+    guess_count = 0
+    game_status = None
+    #print(f"status: {game_status}")
+    
+    while game_status == None:
+        guess = input("enter guess: >>>")
 
+        length_1 = len(sol_wd)
+        length_2 = len(guess)
+
+        if length_1 != length_2:
+            print(f"Invalid word length. Solution length is {length_1} ")
+
+        else:
+            guess_count += 1
+            output_list = []
+
+            for i in range(0,length_1):
+                if guess[i] == sol_wd[i]:
+                    output_list.append("g")
+                elif guess[i] in sol_wd:
+                    output_list.append("y")
+                else:
+                    output_list.append("_")
+
+            print("   ")
+            print(f"{output_list}   {guess_count}")
+
+            if guess == sol_wd and guess_count <= 6:
+                print("Correct!")
+                game_status = "win\n"
+                print(game_status)
+            
+            if guess_count == 6:
+                print("\nOut of guesses!")
+                print(f"Correct word was: {sol_wd}")
+                game_status = "lose\n"
+                print(game_status)
 
 
 def exit_program():
@@ -111,6 +147,7 @@ def main_menu():
         return
 
     return user_input
+      
 
 print("""
 -----------------------------------------
@@ -119,6 +156,7 @@ Wordle But Python (CLI) by Isaac De Silva
 """)
 
 if __name__ == "__main__":
+    words_five_letters = load_words("five_letter_words.txt")
     user_input = main_menu()
     while user_input != "exit":
         main_menu()
