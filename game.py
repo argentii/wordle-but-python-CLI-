@@ -73,20 +73,17 @@ def wordle_setup():
         else:
             print("Invalid input. [Try RANDOM] or [CHOOSE] to continue. >>>")
 
-        print(f"-solution word selected-")
+        print(f"\n-solution word selected-")
         #print(f"solution word: {solution_word}")
         return solution_word
 
           
 def main_game(sol_wd):
-    print("\npass main_game\n")
-    #print("solution: " + str(sol_wd))
     guess_count = 0
     game_status = None
-    #print(f"status: {game_status}")
     
     while game_status == None:
-        guess = input("enter guess: >>>")
+        guess = input("\nenter guess: >>>")
 
         length_1 = len(sol_wd)
         length_2 = len(guess)
@@ -118,7 +115,7 @@ def main_game(sol_wd):
                 print("\nOut of guesses!")
                 print(f"Correct word was: {sol_wd}")
                 game_status = "lose\n"
-                print(game_status)
+                #print(game_status)
 
 
 def exit_program():
@@ -126,37 +123,31 @@ def exit_program():
 
 
 def main_menu():
-    user_input = input("Type START to play, MAN to see how to play, EXIT to quit >>>").strip().lower()
-    print(user_input)
+    while True:
+        user_input = input("Type START to play, MAN to see how to play, EXIT to quit >>>").strip().lower()
+        #print(user_input)
 
-    if user_input == "man":
-         man()
-         user_input = input("Type START to play, MAN to see how to play, EXIT to quit >>>").strip().lower()
-         print(user_input)
+        if user_input == "man":
+            man()
 
-    elif user_input in ["exit", "quit"]:
-         exit_program()
+        elif user_input in ["exit", "quit"]:
+            exit_program()
 
-    elif user_input == "start":
-         solution_word = wordle_setup()
-         if solution_word != None:
-            main_game(solution_word)
+        elif user_input == "start":
+            solution_word = wordle_setup()
+            if solution_word != None:
+                main_game(solution_word)
 
-    else:
-        print("Command not recognized. Capitalization does not matter, but spelling does.")
-        return
+        else:
+            print("Command not recognized. Capitalization does not matter, but spelling does.")
 
-    return user_input
-      
-
-print("""
------------------------------------------
-Wordle But Python (CLI) by Isaac De Silva
------------------------------------------
-""")
 
 if __name__ == "__main__":
     words_five_letters = load_words("five_letter_words.txt")
-    user_input = main_menu()
-    while user_input != "exit":
-        main_menu()
+    print("""
+-----------------------------------------
+Wordle But Python (CLI) by Isaac De Silva
+-----------------------------------------
+   """)
+
+    main_menu()

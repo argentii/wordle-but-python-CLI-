@@ -11,3 +11,5 @@ Timeline:
 -Januaryish 2025: made v1-v4 prototypes over the span of a week
 
 -March 2025: Plans to make seperate file to get 5 letter words off of (practicing file io), began learning tkinter (GUI version maybe?)
+
+-June 13, 2025: Made seperate .txt file for storing words, made a short program that turns a list of words into easy to "r" txt for file i/o. Ended up not using it and made 

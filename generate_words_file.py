@@ -8,9 +8,9 @@ words_five_letters = [
     "inlet", "joint", "karma", "lumen", "mirth", "niche", "orbit", "petal", "quark", "realm",
     "smile", "thorn", "utter", "vigor", "whale", "youth", "azure", "banjo", "coral", "dealt",
     "event", "frost", "giant", "haste", "input", "jazzy", "koala", "ledge", "manor", "ninth",
-]
+]   #add more words here if you want^^
 
-with open("words.txt", "w") as file:
+with open("five_letter_words.txt", "w") as file: #shane, my cmsc 201 prof, showed us how to use file i/o in python and i finally used it lmao thanks shane
     for word in words_five_letters:
         file.write(word + "\n")
 
