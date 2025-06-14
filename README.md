@@ -1,5 +1,5 @@
 # wordle-but-python-CLI-
-This is my first github project. I've only done the "get started in less than an hour" project as of first originally writing this, so things are about to get messy.
+This is my first github project. I've only done the "get started in less than an hour" project as of first originally writing this, so things are gonna get messy.
 
 I've made something similar to this before for homework, but I wanted to develop it further to keep my python skills fresh over the break.
 
